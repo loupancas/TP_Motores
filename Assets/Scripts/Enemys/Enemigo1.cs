@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemigo1 : Enemy
+public class Enemigo1 : Enemy, IEnemyAttack
 
 {
     public Transform waypoint1;
     public Transform waypoint2;
     public Transform waypointT;
+
+    public int cantidadDmg = 10;
 
     private void Awake()
     {
@@ -43,5 +45,18 @@ public class Enemigo1 : Enemy
 
     }
 
+    void IEnemyAttack.Attack()
+    {
+        void OnTriggerEnter(Collider other)
+        {
+            if (other.tag == "Player")
+            {
+                other.GetComponent<Player>().TakeDamage(cantidadDmg);
 
+                Debug.Log("ataque");
+
+            }
+
+        }
+    }
 }

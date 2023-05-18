@@ -10,7 +10,8 @@ public class Enemigo3 : Enemy
     [SerializeField] float shotspeed;
     [SerializeField] float time;
     [SerializeField] float rangeAttack;
-
+    public int cantidadDmg = 10;
+    //Player player;
     private void Update()
     {
         Attack();
@@ -34,7 +35,7 @@ public class Enemigo3 : Enemy
                 bullet newbullet = Instantiate(bullet, transform.position, Quaternion.identity);
                 newbullet.transform.localPosition = transform.position;
                 newbullet.transform.rotation = transform.rotation;
-
+                //player.GetComponent<Player>().TakeDamage(cantidadDmg);
             }
             time = shotspeed;
         }
