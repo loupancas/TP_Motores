@@ -17,7 +17,7 @@ public class Enemigo1 : Enemy
 
     protected override void introduction()
     {
-        base.introduction();
+        //base.introduction();
         Debug.Log("Hola, este es el enemigo 1");
     }
 

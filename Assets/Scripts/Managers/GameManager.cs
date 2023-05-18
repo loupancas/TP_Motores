@@ -4,21 +4,24 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance;
+    public static GameManager gameManager;
+    public GameObject playerInstance;
     private void Awake()
     {
-        if(instance==null)
+        if(gameManager==null)
         {
-            instance = this;
+            gameManager = this;
             //DontDestroyOnLoad(this.gameObject); para usarse en escenas posteriores si se requiere
         }
         else
         {
             Destroy(this.gameObject);
         }
+
+        player = FindObjectOfType<Player>();
     }
 
-    Player player;
+    public Player player;
 
     public void SetPlayer(Player _player)
     {
@@ -38,7 +41,7 @@ public class GameManager : MonoBehaviour
 
     public void Start()
     {
-        Invoke(" StartGame",0.1f);
+        Invoke("StartGame",0.1f);
     }
 
     public void StartGame()

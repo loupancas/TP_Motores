@@ -7,30 +7,33 @@ namespace Entities.LifeSystem
 
 public class Life 
 {
-    private int life;
-    private int lifeMax;
+    private int currentlife;
+    public int lifeMax;
 
     public int Live
     {
         get
         {
-            return life;
+            return currentlife;
+                
         }
         set
         {
             if(value<0)
             {
-                life = 0;
+                currentlife = 0;
             }
             else if (value > lifeMax)
             {
-                life = lifeMax;
+                currentlife = lifeMax;
             }
             else
             {
-                life = value;
+                currentlife = value;
             }
         }
+
+            
 
     }
 
@@ -39,18 +42,20 @@ public class Life
 
     public Life(int _maxlife) //constructor
     {
-        life = _maxlife;
+        currentlife = _maxlife;
         lifeMax= _maxlife;
 
 
     }
 
-    public Life(int _maxlife,int _currentLife) //constructor se puede usar porque tiene una sobrecarga _currentlife
+    public Life(int _maxlife,int _currentLife) //****constructor se puede usar porque tiene una sobrecarga _currentlife
     {
-        life = _currentLife;
+        currentlife = _currentLife;
         lifeMax = _maxlife;
 
     }
+
+  
 
 
 

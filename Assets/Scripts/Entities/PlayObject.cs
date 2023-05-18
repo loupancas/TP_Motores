@@ -10,6 +10,10 @@ public abstract class PlayObject : MonoBehaviour
     {
         //GameManager.instance.AddPlayObject(this);
     }
+    protected virtual void Start()
+    {
+        GameManager.gameManager.AddPlayObject(this);
+    }
     public virtual void Initialize()
     {
         isUpdating = true;
@@ -19,7 +23,7 @@ public abstract class PlayObject : MonoBehaviour
     public virtual void DeInitialize()
     {
         isUpdating = false;
-        GameManager.instance.RemovePlayObject(this);
+        GameManager.gameManager.RemovePlayObject(this);
         OnDeInitialize();
     }
     public void Pause()
