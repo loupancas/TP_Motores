@@ -940,6 +940,7 @@ MonoBehaviour:
   waypoint1: {fileID: 735240254}
   waypoint2: {fileID: 295193470}
   waypointT: {fileID: 0}
+  cantidadDmg: 10
 --- !u!136 &686329689
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1056,6 +1057,7 @@ MonoBehaviour:
   shotspeed: 0.13
   time: 0
   rangeAttack: 4
+  cantidadDmg: 10
   projectile: {fileID: 5749157741099109368, guid: 3d9559677d867384fa3be4e544ba9150, type: 3}
 --- !u!1 &705507993
 GameObject:
@@ -2282,6 +2284,7 @@ MonoBehaviour:
   maxX: 22
   minY: 20
   maxY: -20
+  cantidadDmg: 20
 --- !u!1 &1402231572
 GameObject:
   m_ObjectHideFlags: 0
@@ -2677,7 +2680,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21f4c170ca51fa74b889138ccb74dbee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healQuantity: 0
+  healQuantity: 100
 --- !u!4 &1700375370
 Transform:
   m_ObjectHideFlags: 0

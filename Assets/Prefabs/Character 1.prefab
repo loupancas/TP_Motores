@@ -61,6 +61,7 @@ GameObject:
   - component: {fileID: 4740045011807004378}
   - component: {fileID: 4740045011807004379}
   - component: {fileID: 4740045011807004357}
+  - component: {fileID: 8906525069561623810}
   m_Layer: 7
   m_Name: Character 1
   m_TagString: Player
@@ -137,6 +138,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialLife: 100
+  maxLife: 100
+  ManagerUI: {fileID: 0}
+--- !u!114 &8906525069561623810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4740045011807004377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55a4cd870e3106240ad7263fbde85bda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4740045013245109079
 GameObject:
   m_ObjectHideFlags: 0
@@ -425,3 +440,17 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4962329279716509036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5551086774241983023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 892cebe2f47ead24f9892a3aacb54b59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  view: {fileID: 8906525069561623810}
+  Movement: {fileID: 4740045011807004379}

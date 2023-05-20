@@ -40,8 +40,8 @@ public class Movement : MonoBehaviour
       
         if(Input.GetKeyDown(KeyCode.Space)&& isGrounded)
         {
-            velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity); // formula para salto
-            view.Jump();
+           
+            view.Anim_Jump();
         }
 
         velocity.y += gravity * Time.deltaTime;
@@ -68,8 +68,15 @@ public class Movement : MonoBehaviour
             view.Grab();
         }
 
-
+        
 
 
     }
+
+    public void AnimEV_RealJump()
+    {
+        velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity); // formula para salto
+    }
+
+
 }

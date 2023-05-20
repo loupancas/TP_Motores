@@ -35,13 +35,13 @@ public abstract class LifeEntity : PlayObject
     public virtual void Health(int healthAmount)
     {
 
-        if (initialLife < maxLife)
+        if (life.Live < maxLife)
         {
            life.Live += healthAmount;
         }
         if (initialLife > maxLife)
         {
-            initialLife = maxLife;
+            life.Live = maxLife;
         }
 
     }

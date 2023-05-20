@@ -30,7 +30,7 @@ public class Charview : MonoBehaviour
     {
         myAnim.SetTrigger("Grab");
     }
-    public void Jump()
+    public void Anim_Jump()
     {
         myAnim.SetTrigger("Jump");
     }
