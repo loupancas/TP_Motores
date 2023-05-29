@@ -55,7 +55,7 @@ public class Movement : MonoBehaviour
             //view.isRunning(false);
         //}
 
-        view.horizontal(Input.GetAxis("Horizontal"));
+        view.horizontal(Input.GetAxis("Horizontal")); //animacion movimiento
         view.vertical(Input.GetAxis("Vertical"));
 
         characterController.Move(move * speed * Time.deltaTime);

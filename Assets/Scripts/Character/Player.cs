@@ -5,7 +5,7 @@ using Entities.LifeSystem;
 
 
 
-public class Player : LifeEntity
+public class Player : LifeEntity, IEnemyAttack, IBulletDamage
 {
 
     public ManagerUI ManagerUI;
@@ -75,5 +75,15 @@ public class Player : LifeEntity
         print("se curo");
     }
 
+    public void ContactAttack(int dmg)
+    {
+        TakeDamage(dmg);
+        Debug.Log("ataque especial");
+    }
 
+    public void BulletDmg(int dmg)
+    {
+        TakeDamage(dmg);
+        Debug.Log("ataque bala");
+    }
 }

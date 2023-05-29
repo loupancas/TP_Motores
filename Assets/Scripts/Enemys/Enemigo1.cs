@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemigo1 : Enemy, IEnemyAttack
+public class Enemigo1 : Enemy
 
 {
     public Transform waypoint1;
@@ -45,18 +45,18 @@ public class Enemigo1 : Enemy, IEnemyAttack
 
     }
 
-    void IEnemyAttack.Attack()
-    {
+    
         void OnTriggerEnter(Collider other)
         {
-            if (other.tag == "Player")
-            {
-                other.GetComponent<Player>().TakeDamage(cantidadDmg);
-
-                Debug.Log("ataque");
-
-            }
+           var damageable = other.GetComponent<IEnemyAttack>();
+        
+           if(damageable!=null)
+           {
+             damageable.ContactAttack(cantidadDmg);
+           }
+        
+           
 
         }
-    }
+    
 }

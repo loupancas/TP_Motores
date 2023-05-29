@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemigo2 : Enemy, IEnemyAttack
+public class Enemigo2 : Enemy
 {
     private float moveRate = 2f;
     private float moveTimer;
@@ -22,19 +22,16 @@ public class Enemigo2 : Enemy, IEnemyAttack
 
     }
 
-    void IEnemyAttack.Attack()
+    void OnTriggerEnter(Collider other)
     {
-        void OnTriggerEnter(Collider other)
+        var damageable = other.GetComponent<IEnemyAttack>();
+
+        if (damageable != null)
         {
-            if (other.tag == "Player")
-            {
-                other.GetComponent<Player>().TakeDamage(cantidadDmg);
-
-                Debug.Log("ataque");
-
-            }
-
+            damageable.ContactAttack(cantidadDmg);
         }
+
+
     }
 
     private void RandomMove()

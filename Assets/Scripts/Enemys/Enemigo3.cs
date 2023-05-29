@@ -10,6 +10,7 @@ public class Enemigo3 : Enemy
     [SerializeField] float shotspeed;
     [SerializeField] float time;
     [SerializeField] float rangeAttack;
+    [SerializeField] new Transform transform;
     public int cantidadDmg = 10;
     //Player player;
     private void Update()

@@ -28,35 +28,47 @@ public class bullet : MonoBehaviour
 
     
 
-    private void OnTriggerEnter(Collider collision) // las naranjas se destruiran cuando colisionen con otros objetos que tengan collider, recordar que deben tener RigidBody
+    private void OnTriggerEnter(Collider collision) // las bullets se destruiran cuando colisionen con otros objetos que tengan collider, recordar que deben tener RigidBody
     {
+        var damageable = collision.GetComponent<IBulletDamage>();
 
-        var B = collision.gameObject.GetComponent<bullet>();
-
-        if (B != null) // si choca una naranja con otra naranja sale de la función y no lo elimina
+        if (damageable!= null)
         {
-            return;
+            damageable.BulletDmg(damage);
         }
 
-        if (!isEnemyBullet)
-        {
-            Enemy Rompible = collision.gameObject.GetComponent<Enemy>(); // esta trayendo el codigo 
-            
 
-            if (Rompible)
-            {
-                Debug.Log("el daño realizado es" + damage);
-                Rompible.golpe(damage); // llama a la funcion golpe del otro script
 
-            }
-            
-            if (collision.gameObject.tag != "Player") // se destruirá con todo lo que no sea el PJ o sea los enemigos
-            {
 
-                Destroy(gameObject);
+        //var B = collision.gameObject.GetComponent<bullet>();
 
-            }
-        }
+        //if (B != null) // si choca un bullet con otro sale de la función y no lo elimina
+        //{
+        //    return;
+        //}
+
+        //if (!isEnemyBullet)
+        //{
+        //    Enemy Rompible = collision.gameObject.GetComponent<Enemy>(); // esta trayendo el codigo 
+
+
+        //    if (Rompible)
+        //    {
+        //        Debug.Log("el daño realizado es" + damage);
+        //        Rompible.golpe(damage); // llama a la funcion golpe del otro script
+
+        //    }
+
+        //    if (collision.gameObject.tag != "Player") // se destruirá con todo lo que no sea el PJ o sea los enemigos
+        //    {
+
+        //        Destroy(gameObject);
+
+        //    }
+        //}
+
+
+
 
     }
 
