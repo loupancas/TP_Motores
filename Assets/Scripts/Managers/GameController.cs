@@ -5,10 +5,11 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    LifeEntity life;
+    
+    [SerializeField] LifeEntity life;
     void Start()
     {
-        //life.Dead += Playermuere;
+        life.Dead += Playermuere;
     }
 
 
@@ -22,6 +23,6 @@ public class GameController : MonoBehaviour
 
     private void OnDisable()
     {
-        //life.Dead -= Playermuere;
+        life.Dead -= Playermuere;
     }
 }
