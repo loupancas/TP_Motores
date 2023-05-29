@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemigo1 : Enemy
+public class Enemigo_Chaser : Enemy
 
 {
     public Transform waypoint1;

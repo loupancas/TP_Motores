@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemigo3 : Enemy
+public class Enemigo_Dispara : Enemy
 {
     
     [SerializeField] GameObject character;

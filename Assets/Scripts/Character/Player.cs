@@ -9,6 +9,7 @@ public class Player : LifeEntity, IEnemyAttack, IBulletDamage
 {
 
     public ManagerUI ManagerUI;
+    
 
     protected override void Awake()
     {

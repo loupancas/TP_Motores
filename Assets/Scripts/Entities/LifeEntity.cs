@@ -9,7 +9,9 @@ public abstract class LifeEntity : PlayObject
     protected Life life;
     [SerializeField] int initialLife = 100;
     [SerializeField] int maxLife=100;
-  
+
+    public delegate void Mydelegate();
+    public event Mydelegate Dead;
     public override void Initialize()
     {
         base.Initialize();
@@ -27,6 +29,10 @@ public abstract class LifeEntity : PlayObject
         
         Debug.Log("la vida restante es" + life.Live);
 
+        if(life.Live<0)
+        {
+            Dead();
+        }
 
     }
 

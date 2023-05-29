@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour
     public void Start()
     {
         Invoke("StartGame",0.1f);
+      
     }
 
     public void StartGame()

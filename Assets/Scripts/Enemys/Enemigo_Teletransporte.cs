@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemigo2 : Enemy
+public class Enemigo_Teletransporte : Enemy
 {
     private float moveRate = 2f;
     private float moveTimer;
