@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Entities.LifeSystem;
+using System;
 
 public abstract class LifeEntity : PlayObject
 {
@@ -10,8 +11,8 @@ public abstract class LifeEntity : PlayObject
     [SerializeField] int initialLife = 100;
     [SerializeField] int maxLife=100;
 
-    public delegate void Mydelegate();
-    public event Mydelegate Dead;
+    
+    public event Action DeathEvent=delegate{ };
     public override void Initialize()
     {
         base.Initialize();
@@ -29,9 +30,9 @@ public abstract class LifeEntity : PlayObject
         
         Debug.Log("la vida restante es" + life.Live);
 
-        if(life.Live<0)
+        if(life.Live<=0)
         {
-            Dead();
+            DeathEvent.Invoke();
         }
 
     }
@@ -51,6 +52,21 @@ public abstract class LifeEntity : PlayObject
         }
 
     }
+
+    public void subscribeToDeath(Action _callback)
+    {
+        DeathEvent += _callback;
+
+    }
+
+    public void DesubscribeToDeath(Action _callback)
+    {
+        DeathEvent -= _callback;
+
+    }
+
+
+
 
 
 

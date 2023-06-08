@@ -9,7 +9,7 @@ public class GameController : MonoBehaviour
     [SerializeField] LifeEntity life;
     void Start()
     {
-        life.Dead += Playermuere;
+        life.DeathEvent += Playermuere;
     }
 
 
@@ -23,6 +23,6 @@ public class GameController : MonoBehaviour
 
     private void OnDisable()
     {
-        life.Dead -= Playermuere;
+        life.DeathEvent -= Playermuere;
     }
 }

@@ -48,7 +48,7 @@ public class Enemigo_Chaser : Enemy
     
         void OnTriggerEnter(Collider other)
         {
-           var damageable = other.GetComponent<IEnemyAttack>();
+           var damageable = (IEnemyAttack)other.GetComponent<Player>();//
         
            if(damageable!=null)
            {

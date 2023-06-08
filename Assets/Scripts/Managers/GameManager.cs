@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager gameManager;
-    public GameObject playerInstance;
+    
+    Player player;
     private void Awake()
     {
         if(gameManager==null)
@@ -21,7 +23,7 @@ public class GameManager : MonoBehaviour
         player = FindObjectOfType<Player>();
     }
 
-    public Player player;
+   
 
     public void SetPlayer(Player _player)
     {
@@ -47,13 +49,18 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
+        player.subscribeToDeath(onPlayerDeath);
+        
         for (int i = 0; i < objects.Count; i++)
         {
             objects[i].Initialize();
         }
     }
 
-
+    void onPlayerDeath()
+    {
+        SceneManager.LoadScene("GameOver");
+    }
 
 
     bool pause = false;

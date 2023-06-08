@@ -13,17 +13,9 @@ public class bullet : MonoBehaviour
 
     private void Update()
     {
-        bulletMove();
-    }
-
-    void bulletMove()
-    {
-
-        transform.Translate(Vector3.forward * speed * Time.deltaTime);
+        transform.position = transform.position + transform.forward * speed * Time.deltaTime;
         lifetime -= Time.deltaTime;
         if (lifetime <= 0) Destroy(gameObject);
-        
-
     }
 
     
@@ -32,10 +24,43 @@ public class bullet : MonoBehaviour
     {
         var damageable = collision.GetComponent<IBulletDamage>();
 
-        if (damageable!= null)
+        if(isEnemyBullet)
         {
-            damageable.BulletDmg(damage);
+            //var player = (Player)damageable; // convierte a player
+
+            if(damageable is Player)
+            {
+                var player = (Player)damageable;
+
+                if (player != null)
+                {
+                    if (damageable != null)
+                    {
+                        damageable.BulletDmg(damage);
+                    }
+
+                }
+            }
+
+             
+
+          
         }
+        else
+        {
+            var enemy = (Enemy)damageable; // convierte a Enemy
+            if (enemy != null)
+            {
+                if (damageable != null)
+                {
+                    damageable.BulletDmg(damage);
+                }
+
+            }
+
+        }/////
+
+
 
 
 

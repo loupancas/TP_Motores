@@ -10,12 +10,14 @@ public class Enemigo_Dispara : Enemy
     [SerializeField] float shotspeed;
     [SerializeField] float time;
     [SerializeField] float rangeAttack;
-    [SerializeField] new Transform transform;
+    [SerializeField] Transform shootPoint;
     public int cantidadDmg = 10;
     //Player player;
     private void Update()
     {
         Attack();
+        Vector3 dir = character.transform.position - this.transform.position; // mirar al character
+        transform.forward = dir;
     }
     public GameObject projectile;
     protected override void introduction()
@@ -27,16 +29,20 @@ public class Enemigo_Dispara : Enemy
     protected override void Attack()
     {
         //base.Attack();
-        transform.forward = character.transform.position - transform.position;
+        //shootPoint.forward = character.transform.position - shootPoint.position;
         if (time > 0) time -= Time.deltaTime;
         if(time<=0)
         {
             if (character != null)
             {
-                bullet newbullet = Instantiate(bullet, transform.position, Quaternion.identity);
-                newbullet.transform.localPosition = transform.position;
-                newbullet.transform.rotation = transform.rotation;
-                //player.GetComponent<Player>().TakeDamage(cantidadDmg);
+                bullet newbullet = Instantiate(bullet, shootPoint.position, Quaternion.identity);
+                newbullet.isEnemyBullet = true;
+                newbullet.transform.position = shootPoint.position;
+                Vector3 forwardaux = shootPoint.forward;
+                forwardaux.y = 0;
+
+                newbullet.transform.forward = shootPoint.forward;
+                
             }
             time = shotspeed;
         }

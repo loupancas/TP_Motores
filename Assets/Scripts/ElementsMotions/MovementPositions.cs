@@ -30,6 +30,12 @@ public class MovementPositions : MonoBehaviour
             {
                 NextPosIndex = 0;
             }
+
+            NextPos = Positions[NextPosIndex];
+        }
+        else
+        {
+            transform.position = Vector3.MoveTowards(transform.position,NextPos.position,ObjectSpeed*Time.deltaTime);
         }
     }
 
