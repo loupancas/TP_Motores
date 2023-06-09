@@ -8,7 +8,7 @@ public class Main_damage : MonoBehaviour
     public int cantidadDmg = 10;
     
 
-    private void OnTriggerEnter(Collider other)
+    protected virtual void OnTriggerEnter(Collider other)
     {
         if (other.tag=="Player")
         {
@@ -20,7 +20,7 @@ public class Main_damage : MonoBehaviour
 
     }
 
-    protected virtual void OnTriggerStay(Collider other)
+    protected virtual void OnTriggerExit(Collider other)
     {
         if (other.tag == "Player")
         {
@@ -29,8 +29,19 @@ public class Main_damage : MonoBehaviour
             Debug.Log("ataque");
 
         }
-
     }
+
+    //protected virtual void OnTriggerStay(Collider other)
+    //{
+    //    if (other.tag == "Player")
+    //    {
+    //        other.GetComponent<Player>().TakeDamage(cantidadDmg);
+
+    //        Debug.Log("ataque");
+
+    //    }
+
+    //}
 
 
 

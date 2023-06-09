@@ -8,25 +8,41 @@ public class Pinchos : Main_damage
     public bool invencible=false;
     public float tiempo_invencible = 1f;
     public float tiempo_frenado = 0.2f;
-    protected override void OnTriggerStay(Collider other)
+
+
+    protected override void OnTriggerEnter(Collider other)
     {
-        base.OnTriggerStay(other);
 
-        if(this.tag=="pincho")
+        if (other.GetComponent<Player>()!=null)
         {
-            StartCoroutine(Invulnerabilidad());
+            StartCoroutine(Damage(other.GetComponent<Player>()));
+          
 
-            //StartCoroutine(frenaVelocidad());
         }
 
+        
 
     }
 
-    IEnumerator Invulnerabilidad()
+    protected override void OnTriggerExit(Collider other)
     {
-        invencible = true;
-        yield return new WaitForSeconds(tiempo_invencible);
-        invencible = false;
+        if (other.GetComponent<Player>() != null)
+        {
+            StopAllCoroutines();
+
+        }
+    }
+
+
+    IEnumerator Damage(Player player)
+    {
+        while(true)
+        {
+            player.TakeDamage(cantidadDmg);
+            yield return new WaitForSeconds(tiempo_invencible);
+        }
+        
+       
 
     }
 

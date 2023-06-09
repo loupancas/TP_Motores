@@ -8,7 +8,7 @@ public class Inventory<T>
 
     public void Add(string name, T obj)
     {
-
+        Debug.Log("Se añadió un item al inventario");
     }
 
     public T Get(string name)
