@@ -7,7 +7,7 @@ public class Inventario : MonoBehaviour
 {
     public static event Action<List<InventoryItem>> OnInventoryChange;
 
-    public List<InventoryItem> inventory;
+    public List<InventoryItem> inventory=new List<InventoryItem>();
     private Dictionary<ItemData, InventoryItem> itemDictionary=new Dictionary<ItemData, InventoryItem>(); // para chequear si existe o no en el inventario
 
     private void OnEnable()
@@ -28,6 +28,7 @@ public class Inventario : MonoBehaviour
         {
             item.addToStack();
             Debug.Log($"{ item.itemData.displayName} La cantidad total ahora es {item.stackSize}");
+            OnInventoryChange?.Invoke(inventory);
         }
         else // no existe? crear
         {
@@ -35,6 +36,7 @@ public class Inventario : MonoBehaviour
             inventory.Add(newItem);
             itemDictionary.Add(itemData, newItem);
             Debug.Log($"Se añadió { itemData.displayName} por primera vez");
+            OnInventoryChange?.Invoke(inventory);
         }
     }
 
@@ -48,6 +50,7 @@ public class Inventario : MonoBehaviour
                 inventory.Remove(item);
                 itemDictionary.Remove(itemData);
             }
+            OnInventoryChange?.Invoke(inventory);
         }
     }
 
