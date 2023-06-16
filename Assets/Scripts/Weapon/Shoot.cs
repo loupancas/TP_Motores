@@ -27,10 +27,7 @@ public class Shoot : MonoBehaviour
                 Destroy(newBullet,4);
 
             }
-
-            
-
-
+        
 
         }
 

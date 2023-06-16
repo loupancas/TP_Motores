@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Gem : MonoBehaviour
+public class Gem : MonoBehaviour, ICollectible
 {
     public static event HandleGemCollected OnGemCollected;
     public delegate void HandleGemCollected(ItemData itemData);
