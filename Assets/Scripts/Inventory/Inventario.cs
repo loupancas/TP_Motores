@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Inventario : MonoBehaviour
 {
+    public static event Action<List<InventoryItem>> OnInventoryChange;
+
     public List<InventoryItem> inventory;
     private Dictionary<ItemData, InventoryItem> itemDictionary=new Dictionary<ItemData, InventoryItem>(); // para chequear si existe o no en el inventario
 
