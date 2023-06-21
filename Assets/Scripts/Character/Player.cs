@@ -9,8 +9,8 @@ public class Player : LifeEntity, IEnemyAttack, IBulletDamage
 {
 
     public ManagerUI ManagerUI;
-    
 
+    
     protected override void Awake()
     {
        // base.Awake();//life = new Life(100);

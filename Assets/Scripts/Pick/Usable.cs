@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu]
-public class ItemData : ScriptableObject
+public abstract class Usable : MonoBehaviour
 {
-    public string displayName;
-    public Sprite icon;
     public string UsableName;
+
+    public abstract void Use();
+   
 }

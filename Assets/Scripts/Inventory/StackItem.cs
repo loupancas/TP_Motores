@@ -5,25 +5,27 @@ using System;
 
 [Serializable]
 
-public class InventoryItem 
+public class StackItem 
 {
     public ItemData itemData;
 
-    public int stackSize;
+    private int stackSize; //encapsulado
+    public int StackSize { get => stackSize; set => stackSize = value; }
 
-
-    public InventoryItem(ItemData item)  // constructor
+    public StackItem(ItemData item)  // constructor
     {
         itemData = item;
         addToStack();
     }
+
+   
 
     public void addToStack()
     {
         stackSize++;
     }
 
-    public void removeFromStack()
+    public void RemoveFromStack()
     {
         stackSize--;
     }

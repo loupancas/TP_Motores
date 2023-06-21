@@ -19,7 +19,7 @@ public class InventorySlot : MonoBehaviour
 
     }
 
-    public void DrawSlot(InventoryItem item)
+    public void DrawSlot(StackItem item)
     {
         if(item==null)
         {
@@ -33,7 +33,7 @@ public class InventorySlot : MonoBehaviour
 
         icon.sprite = item.itemData.icon;
         labelText.text = item.itemData.displayName;
-        stackSizeText.text = item.stackSize.ToString();
+        stackSizeText.text = item.StackSize.ToString();
 
 
 

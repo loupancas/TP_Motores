@@ -27,7 +27,7 @@ public class InventoryManager : MonoBehaviour
         inventorySlots = new List<InventorySlot>(10);
     }
 
-    void DrawInventory(List<InventoryItem>inventory)
+    void DrawInventory(List<StackItem>inventory)
     {
         resetInvetory();
         for (int i = 0; i < inventorySlots.Capacity; i++)

@@ -5,56 +5,96 @@ using System;
 
 public class Inventario : MonoBehaviour
 {
-    public static event Action<List<InventoryItem>> OnInventoryChange;
-
-    public List<InventoryItem> inventory=new List<InventoryItem>();
-    private Dictionary<ItemData, InventoryItem> itemDictionary=new Dictionary<ItemData, InventoryItem>(); // para chequear si existe o no en el inventario
-
-    private void OnEnable()
+    public static Inventario instance; // singleton
+    private void Awake()
     {
-        Gem.OnGemCollected += Add;
+        instance=this;
+    }
+    public static event Action<List<StackItem>> OnInventoryChange;
+
+    public List<StackItem> inventory=new List<StackItem>();
+    private Dictionary<ItemData, StackItem> itemDictionary=new Dictionary<ItemData, StackItem>(); // para chequear si existe o no en el inventario
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            TryUse(0);
+        }
     }
 
-    private void OnDisable()
+
+    public void TryUse(int index) //primer indice cero
     {
-        Gem.OnGemCollected -= Add;
+        if(inventory.Count>0 && inventory.Count>=index+1 )
+        {
+            string nameUsable = inventory[index].itemData.UsableName;
+            UsableManager.instance.Use(nameUsable);
+        }
     }
 
 
 
     public void Add(ItemData itemData)
     {
-        if(itemDictionary.TryGetValue(itemData,out InventoryItem item)) // existe? añadir
+        for (int i = 0; i < inventory.Count; i++) 
         {
-            item.addToStack();
-            Debug.Log($"{ item.itemData.displayName} La cantidad total ahora es {item.stackSize}");
-            OnInventoryChange?.Invoke(inventory);
-        }
-        else // no existe? crear
-        {
-            InventoryItem newItem = new InventoryItem(itemData);
-            inventory.Add(newItem);
-            itemDictionary.Add(itemData, newItem);
-            Debug.Log($"Se añadió { itemData.displayName} por primera vez");
-            OnInventoryChange?.Invoke(inventory);
-        }
-    }
-
-    public void Remove (ItemData itemData)
-    {
-        if(itemDictionary.TryGetValue(itemData,out InventoryItem item))
-        {
-            item.removeFromStack();
-            if(item.stackSize==0)
+            if(inventory[i].itemData.displayName==itemData.displayName)
             {
-                inventory.Remove(item);
-                itemDictionary.Remove(itemData);
+                inventory[i].addToStack();
+                Debug.Log($"{ itemData.displayName} La cantidad total ahora es {inventory.Count+1}");
+                return;
             }
-            OnInventoryChange?.Invoke(inventory);
         }
+
+        StackItem newItem = new StackItem(itemData);
+        inventory.Add(newItem);
+        Debug.Log($"Se añadió { itemData.displayName} por primera vez");
+
+        OnInventoryChange.Invoke(inventory);
+        
+
     }
 
+    public void RemoveOne (ItemData itemData)
+    {
+        StackItem stackToRemove = null;
 
+        for (int i = 0; i < inventory.Count; i++)
+        {
+            if (inventory[i].itemData.displayName == itemData.displayName)
+            {
+                inventory[i].RemoveFromStack();
+                if(inventory[i].StackSize<=0)
+                {
+                    stackToRemove = inventory[i];
+                   
+                }
+
+                
+            }
+        }
+        if(stackToRemove!=null)
+        {
+            inventory.Remove(stackToRemove);
+        }
+
+        OnInventoryChange.Invoke(inventory);
+    }
+
+    public void Remove(ItemData itemData)
+    {
+        StackItem stackToRemove = null;
+        for (int i = 0; i < inventory.Count; i++)
+        {
+            if (inventory[i].itemData.displayName == itemData.displayName)
+            {
+                stackToRemove = inventory[i];
+            }
+        }
+        inventory.Remove(stackToRemove);
+        OnInventoryChange.Invoke(inventory);
+    }
 
 
 
