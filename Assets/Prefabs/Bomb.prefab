@@ -128,6 +128,6 @@ MonoBehaviour:
   speed: 15
   playerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   isEnemyBullet: 0
   damage: 20
