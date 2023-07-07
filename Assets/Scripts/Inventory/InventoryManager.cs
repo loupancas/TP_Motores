@@ -10,10 +10,12 @@ public class InventoryManager : MonoBehaviour
     private void OnEnable() //suscribir
     {
         Inventario.OnInventoryChange += DrawInventory;
+        Inventario.OnInventoryUpdate += UpdateInventory;
     }
     private void OnDisabled() //desuscribir
     {
         Inventario.OnInventoryChange -= DrawInventory;
+        Inventario.OnInventoryUpdate -= UpdateInventory;
     }
 
 
@@ -29,11 +31,24 @@ public class InventoryManager : MonoBehaviour
 
     void DrawInventory(List<StackItem>inventory)
     {
-        resetInvetory();
+        //resetInvetory();
         for (int i = 0; i < inventorySlots.Capacity; i++)
         {
             createInventorySlot();
         }
+
+        for (int i = 0; i < inventory.Count; i++)
+        {
+            inventorySlots[i].DrawSlot(inventory[i]);
+        }
+
+
+    }
+
+
+
+    void UpdateInventory(List<StackItem> inventory)
+    {
 
         for (int i = 0; i < inventory.Count; i++)
         {
