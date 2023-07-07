@@ -5,7 +5,7 @@ using UnityEngine;
 public class InventoryManager : MonoBehaviour
 {
     public GameObject slotPrefab;
-    public List<InventorySlot> inventorySlots = new List<InventorySlot>(10);
+    public List<InventorySlot> inventorySlots = new List<InventorySlot>(4);
 
     private void OnEnable() //suscribir
     {
@@ -31,7 +31,7 @@ public class InventoryManager : MonoBehaviour
 
     void DrawInventory(List<StackItem>inventory)
     {
-        //resetInvetory();
+        resetInvetory();
         for (int i = 0; i < inventorySlots.Capacity; i++)
         {
             createInventorySlot();
