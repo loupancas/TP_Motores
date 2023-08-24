@@ -15,7 +15,8 @@ public class bullet : MonoBehaviour
     {
         transform.position = transform.position + transform.forward * speed * Time.deltaTime;
         lifetime -= Time.deltaTime;
-        if (lifetime <= 0) Destroy(gameObject);
+        //if (lifetime <= 0) Destroy(gameObject);
+        if (lifetime <= 0) gameObject.SetActive(false);
     }
 
     

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Shoot : MonoBehaviour
 {
     public Transform spawnPoint;
-    public GameObject bullet;
+    //public GameObject bullet;
     public float shotForce=1500f;
     public float shotRate = 0.5f;
     private float shotRateTime = 0; // contador
@@ -19,12 +19,14 @@ public class Shoot : MonoBehaviour
         {
             if(Time.time>shotRateTime)
             {
-                GameObject newBullet;
-                newBullet = Instantiate(bullet, spawnPoint.position, spawnPoint.rotation);
-                newBullet.GetComponent<Rigidbody>().AddForce(spawnPoint.forward * shotForce); // vector desde nuestro punto spwan
+                //GameObject newBullet;
+                // newBullet = Instantiate(bullet, spawnPoint.position, spawnPoint.rotation);
+                // newBullet.GetComponent<Rigidbody>().AddForce(spawnPoint.forward * shotForce); // vector desde nuestro punto spwan
+                GameObject bullet = bulletPool.Instance.RequestBullet();
+                bullet.transform.position = spawnPoint.position;
                 shotRateTime = Time.time + shotRate;
 
-                Destroy(newBullet,4);
+                //Destroy(newBullet,4);
 
             }
         

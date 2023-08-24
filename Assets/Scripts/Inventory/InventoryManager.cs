@@ -60,13 +60,19 @@ public class InventoryManager : MonoBehaviour
 
     void createInventorySlot()
     {
-        GameObject newSlot = Instantiate(slotPrefab);
-        newSlot.transform.SetParent(transform, false);
 
-        InventorySlot newSlotComponent = newSlot.GetComponent<InventorySlot>();
-        newSlotComponent.ClearSlot();
+       // if (slotPrefab != null)
+        {
+            GameObject newSlot = Instantiate(slotPrefab);
+            newSlot.transform.SetParent(transform, false);
 
-        inventorySlots.Add(newSlotComponent);
+            InventorySlot newSlotComponent = newSlot.GetComponent<InventorySlot>();
+            newSlotComponent.ClearSlot();
+
+            inventorySlots.Add(newSlotComponent);
+
+        }
+
 
     }
 
